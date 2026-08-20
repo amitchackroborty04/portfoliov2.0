@@ -83,7 +83,7 @@ function TechCard({ skill, index }: { skill: SkillItem; index: number }) {
     <motion.div
       variants={item}
       whileHover={{ scale: 1.05, y: -5 }}
-      className="relative flex h-[164px] flex-col items-center justify-center gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-purple-500/40 dark:border-white/10 dark:bg-[#FFFFFF1A] dark:shadow-none"
+      className="relative flex h-[112px] flex-col items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white p-2 shadow-sm transition hover:border-purple-500/40 dark:border-white/10 dark:bg-[#FFFFFF1A] dark:shadow-none sm:h-[164px] sm:gap-3 sm:p-4"
     >
       <motion.div
         animate={{
@@ -95,18 +95,20 @@ function TechCard({ skill, index }: { skill: SkillItem; index: number }) {
           repeat: Infinity,
           delay: index * 0.3,
         }}
-        className="flex h-[80px] w-[80px] items-center justify-center "
+        className="flex h-[48px] w-[48px] items-center justify-center sm:h-[80px] sm:w-[80px]"
       >
         <Image
           src={imageSrc}
           alt={name}
           width={80}
           height={80}
-          className="h-[80px] w-[80px] object-contain"
+          className="h-[48px] w-[48px] object-contain sm:h-[80px] sm:w-[80px]"
         />
       </motion.div>
 
-      <span className="text-sm text-slate-600 dark:text-gray-300">{name}</span>
+      <span className="text-center text-xs text-slate-600 dark:text-gray-300 sm:text-sm">
+        {name}
+      </span>
     </motion.div>
   );
 }
@@ -129,7 +131,7 @@ function CategoryRow({ category }: { category: CategoryItem }) {
           category.align === "right" ? "justify-end" : "justify-start"
         }`}
       >
-        <h6 className="rounded-[4px] bg-slate-200 px-7 py-3 text-2xl font-normal text-slate-800 dark:bg-[#FFFFFF1A] dark:text-white">
+        <h6 className="rounded-[4px] bg-slate-200 px-7 py-2 md:py-3 text-lg lg:text-2xl font-normal text-slate-800 dark:bg-[#FFFFFF1A] dark:text-white">
           {category.label}
         </h6>
       </div>
@@ -137,7 +139,7 @@ function CategoryRow({ category }: { category: CategoryItem }) {
       {/* Grid */}
       <motion.div
         variants={container}
-        className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"
+        className="grid grid-cols-3 gap-3 md:grid-cols-4 lg:grid-cols-6"
       >
         {category.skills.map((skill, i) => (
           <TechCard key={i} skill={skill} index={i} />
@@ -168,7 +170,7 @@ export default function SkillsSection() {
             whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             viewport={{ once: true }}
-            className="mb-8 inline-flex items-center gap-2 border border-slate-300 px-5 py-3 text-xl font-semibold text-slate-700 dark:border-white/70 dark:text-white"
+            className="mb-8 inline-flex items-center gap-2 border border-slate-300 px-5 py-2 lg:py-3 text-lg lg:ext-xl font-semibold text-slate-700 dark:border-white/70 dark:text-white"
           >
             <motion.span
               animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.15, 1] }}
@@ -183,7 +185,7 @@ export default function SkillsSection() {
             What I Can Do
           </h6>
 
-          <p className="mt-2 text-xl text-slate-600 dark:text-white">
+          <p className="mt-2 text-base lg:text-xl text-slate-600 dark:text-white">
             Delivering complete solutions from frontend to backend
           </p>
         </motion.div>

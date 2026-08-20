@@ -66,7 +66,7 @@ export default function Navbar() {
         <Link
           href="#home"
           onClick={(event) => handleNavClick(event, "#home")}
-          className="h-[56px] w-[171px] transition-transform duration-300 hover:scale-105"
+          className="w-[120px] h-[40px] lg:h-[56px] lg:w-[171px] transition-transform duration-300 hover:scale-105"
         >
           <Image
             src="/logo.png"

@@ -18,16 +18,21 @@ export default function AboutMeSection() {
   const y2 = useTransform(scrollYProgress, [0, 1], [0, 150]);
 
   return (
-    <section 
+    <section
       ref={containerRef}
-      className="relative w-full overflow-hidden bg-slate-50 px-4 py-20 text-slate-900 dark:bg-[#070d28] dark:text-white sm:px-6 lg:px-5"
+      className="relative w-full overflow-hidden bg-slate-50 px-4 py-14 lg:py-20 text-slate-900 dark:bg-[#070d28] dark:text-white sm:px-6 lg:px-5"
     >
       {/* Dynamic Background Accents */}
-      <motion.div style={{ y: y1 }} className="absolute -left-20 top-20 h-72 w-72 rounded-full bg-purple-600/10 blur-[100px]" />
-      <motion.div style={{ y: y2 }} className="absolute -right-20 bottom-20 h-96 w-96 rounded-full bg-blue-600/10 blur-[120px]" />
+      <motion.div
+        style={{ y: y1 }}
+        className="absolute -left-20 top-20 h-72 w-72 rounded-full bg-purple-600/10 blur-[100px]"
+      />
+      <motion.div
+        style={{ y: y2 }}
+        className="absolute -right-20 bottom-20 h-96 w-96 rounded-full bg-blue-600/10 blur-[120px]"
+      />
 
       <div className="mx-auto container relative z-10 grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
-        
         {/* Left Content */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
@@ -41,11 +46,15 @@ export default function AboutMeSection() {
             whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             viewport={{ once: true }}
-            className="mb-8 inline-flex items-center gap-2 border border-slate-300 px-5 py-3 text-xl font-semibold text-slate-700 dark:border-white/70 dark:text-white"
+            className="mb-8 inline-flex items-center gap-2 border border-slate-300 px-5  py-2 lg:py-3 text-lg md:text-xl font-semibold text-slate-700 dark:border-white/70 dark:text-white"
           >
             <motion.span
               animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.15, 1] }}
-              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
             >
               <Sparkles className="h-4 w-4" />
             </motion.span>
@@ -57,7 +66,7 @@ export default function AboutMeSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-4 text-2xl font-medium text-slate-600 dark:text-white sm:text-3xl"
+            className="mb-4 text-xl font-medium text-slate-600 dark:text-white sm:text-3xl"
           >
             Meet Amit Chackraborty
           </motion.h3>
@@ -67,13 +76,16 @@ export default function AboutMeSection() {
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="mb-10 text-4xl font-normal leading-[1.1] sm:text-5xl lg:text-6xl"
+            className="mb-10 text-2xl font-normal leading-[1.1] sm:text-5xl lg:text-6xl"
           >
-            Your <span className="bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">Full-Stack Developer</span>
+            Your{" "}
+            <span className="bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+              Full-Stack Developer
+            </span>
           </motion.h6>
 
           {/* Body Content */}
-          <div className="max-w-2xl space-y-8 text-lg leading-relaxed text-slate-700 dark:text-slate-300 sm:text-xl">
+          <div className="max-w-2xl space-y-8 text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-xl text-justify md:text-left">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -132,7 +144,7 @@ export default function AboutMeSection() {
             className="relative h-[420px] w-[320px] sm:h-[520px] sm:w-[420px]"
           >
             {/* Animated Dashed Border */}
-            <motion.div 
+            <motion.div
               className="absolute -inset-6 rounded-[2.5rem] border-2 border-dashed border-purple-500/30"
               animate={{ rotate: 360 }}
               transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
@@ -188,8 +200,8 @@ export default function AboutMeSection() {
                       Creative Spaces
                     </h4>
                     <p className="text-sm font-medium leading-relaxed text-slate-600 dark:text-slate-300">
-                      From coding to collaboration, I thrive in spaces that spark
-                      innovation and precision.
+                      From coding to collaboration, I thrive in spaces that
+                      spark innovation and precision.
                     </p>
                   </div>
                 </CardContent>
@@ -197,7 +209,6 @@ export default function AboutMeSection() {
             </motion.div>
           </motion.div>
         </div>
-
       </div>
     </section>
   );
