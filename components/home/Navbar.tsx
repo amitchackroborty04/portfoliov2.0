@@ -60,13 +60,13 @@ export default function Navbar() {
       id="site-navbar"
       className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/80 dark:border-white/10 dark:bg-[#080D27]/95 dark:supports-[backdrop-filter]:bg-[#080D27]/80"
     >
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-0">
+      <div className="container mx-auto flex h-14 items-center justify-between px-4 sm:h-16 sm:px-6 lg:px-0">
 
         {/* Logo */}
         <Link
           href="#home"
           onClick={(event) => handleNavClick(event, "#home")}
-          className="w-[120px] h-[40px] lg:h-[56px] lg:w-[171px] transition-transform duration-300 hover:scale-105"
+          className="h-[36px] w-[112px] transition-transform duration-300 hover:scale-105 sm:h-[40px] sm:w-[120px] lg:h-[56px] lg:w-[171px]"
         >
           <Image
             src="/logo.png"
@@ -92,7 +92,7 @@ export default function Navbar() {
         </nav>
 
         {/* Right Side */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
 
           <ModeToggle />
 
@@ -108,36 +108,61 @@ export default function Navbar() {
           {/* Mobile Menu */}
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu />
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-10 w-10 rounded-full border border-slate-200 bg-white/70 text-slate-800 shadow-sm hover:bg-slate-100 dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:bg-white/15 md:hidden"
+                aria-label="Open menu"
+              >
+                <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
 
-            <SheetContent side="left" className="w-[260px]">
-              <div className="flex flex-col gap-6 mt-10">
-
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    onClick={(event) => handleNavClick(event, link.href)}
-                    className="text-lg font-medium"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-
-                <Button
-                  asChild
-                  className="mt-4 rounded-full bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
+            <SheetContent
+              side="left"
+              className="w-[86vw] max-w-[320px] border-r border-slate-200 bg-white px-5 py-6 dark:border-white/10 dark:bg-[#080D27]"
+            >
+              <div className="flex h-full flex-col">
+                <Link
+                  href="#home"
+                  onClick={(event) => handleNavClick(event, "#home")}
+                  className="mb-8 h-[42px] w-[132px]"
                 >
-                  <Link
-                    href="#contact"
-                    onClick={(event) => handleNavClick(event, "#contact")}
+                  <Image
+                    src="/logo.png"
+                    alt="logo"
+                    width={1000}
+                    height={1000}
+                    className="h-full w-full object-contain"
+                  />
+                </Link>
+
+                <nav className="flex flex-col gap-2">
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      onClick={(event) => handleNavClick(event, link.href)}
+                      className="rounded-xl px-4 py-3 text-[15px] font-medium text-slate-700 transition-colors hover:bg-slate-100 hover:text-purple-600 dark:text-slate-200 dark:hover:bg-white/10 dark:hover:text-white"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </nav>
+
+                <div className="mt-auto pt-6">
+                  <Button
+                    asChild
+                    className="h-11 w-full rounded-full bg-slate-900 text-sm font-semibold text-white shadow-sm hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200"
                   >
-                    Get in Touch
-                  </Link>
-                </Button>
+                    <Link
+                      href="#contact"
+                      onClick={(event) => handleNavClick(event, "#contact")}
+                    >
+                      Get in Touch
+                    </Link>
+                  </Button>
+                </div>
 
               </div>
             </SheetContent>
