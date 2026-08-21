@@ -54,11 +54,50 @@ const projects = [
     liveUrl: "https://mybridgepointsolutions.com/",
     githubUrl: "#",
   },
+  {
+  id: 5,
+  title: "BubbleDrive",
+  image:
+    "/Project5.png",
+  description:
+    "BubbleDrive is a UK-based driver-focused platform that brings journey planning, driving charge management, insurance opportunities, and exclusive rewards into one convenient platform for motorists.",
+  tech: ["Next.js", "API", "Tailwind"],
+  liveUrl: "https://bubbledrive.co.uk/",
+  githubUrl: "#",
+},
+{
+id: 6,
+title: "HomeFinder",
+image:
+  "/project6.png",
+description:
+  "HomeFinder is a Kenya-based real estate platform that helps users discover verified properties for sale or rent, with advanced search, location-based property discovery, agent listings, site visit booking, and secure transactions.",
+tech: ["Next.js", "API", "Tailwind"],
+liveUrl: "https://homefinderke.com/",
+githubUrl: "#",
+},
+{
+id: 7,
+title: "DESERT OASIS DERMATOLOGY",
+image:
+  "/project7.png",
+description:
+  "Desert Oasis Dermatology is a professional dermatology clinic website offering medical, surgical, and cosmetic skin care services, with doctor information, patient testimonials, consultation scheduling, and clinic contact details. ",
+tech: ["Next.js", "API", "Tailwind"],
+liveUrl: "https://dodermatology.com/",
+githubUrl: "#",
+},
+
+
+  
 ];
 
 export default function FeaturedProjectsSection() {
   const [viewMode, setViewMode] = useState("grid");
   const [expandedDescriptions, setExpandedDescriptions] = useState<number[]>([]);
+  const [showAllProjects, setShowAllProjects] = useState(false);
+
+  const visibleProjects = showAllProjects ? projects : projects.slice(0, 4);
 
   const handleViewToggle = (mode: string) => {
     setViewMode(mode);
@@ -141,7 +180,7 @@ export default function FeaturedProjectsSection() {
         {/* ───────────── GRID VIEW ───────────── */}
         {viewMode === "grid" && (
           <div className="mt-8 grid auto-rows-fr gap-7 md:grid-cols-2">
-            {projects.map((project, index) => (
+            {visibleProjects.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -193,7 +232,7 @@ export default function FeaturedProjectsSection() {
                             </Link>
                           </Button>
                         </div>
-                        <Link
+                        {/* <Link
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -211,7 +250,7 @@ export default function FeaturedProjectsSection() {
                             />
                             <span>Github</span>
                           </Button>
-                        </Link>
+                        </Link> */}
                       </div>
                     </div>
 
@@ -250,7 +289,7 @@ export default function FeaturedProjectsSection() {
         {/* ───────────── LIST VIEW ───────────── */}
         {viewMode === "list" && (
           <div className="mt-8 flex flex-col gap-5">
-            {projects.map((project, index) => (
+            {visibleProjects.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, x: -24 }}
@@ -351,7 +390,7 @@ export default function FeaturedProjectsSection() {
                           </Button>
                         </div>
 
-                        <Link
+                        {/* <Link
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -369,7 +408,7 @@ export default function FeaturedProjectsSection() {
                             />
                             <span>Github</span>
                           </Button>
-                        </Link>
+                        </Link> */}
                       </div>
                     </div>
                   </CardContent>
@@ -387,11 +426,17 @@ export default function FeaturedProjectsSection() {
         )}
 
         {/* See More button */}
-        <div className="mt-10 flex justify-center">
-          <Button className="rounded-full bg-slate-900 px-8 py-3 text-[12px] font-semibold text-white transition hover:scale-105 hover:bg-slate-800 dark:bg-white/25 dark:text-white dark:hover:bg-white/35">
-            See More
-          </Button>
-        </div>
+        {projects.length > 4 && (
+          <div className="mt-10 flex justify-center">
+            <Button
+              type="button"
+              onClick={() => setShowAllProjects((current) => !current)}
+              className="rounded-full bg-slate-900 px-8 py-3 text-[12px] font-semibold text-white transition hover:scale-105 hover:bg-slate-800 dark:bg-white/25 dark:text-white dark:hover:bg-white/35"
+            >
+              {showAllProjects ? "Show Less" : "See More"}
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
