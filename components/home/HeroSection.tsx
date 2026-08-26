@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -81,6 +81,34 @@ function CountUpValue({ value }: { value: string }) {
 }
 
 export default function HeroSection() {
+  const scrollToSection = (
+    event: MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    event.preventDefault();
+
+    if (typeof window === "undefined") return;
+
+    const navbar = document.getElementById("site-navbar");
+    const navbarHeight = navbar?.offsetHeight ?? 96;
+    const lenis = (window as any).__lenis;
+
+    if (lenis?.scrollTo) {
+      lenis.scrollTo(href, {
+        offset: -navbarHeight - 8,
+        duration: 0.8,
+      });
+      window.history.replaceState(null, "", href);
+      return;
+    }
+
+    const target = document.querySelector(href);
+    if (!target) return;
+
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.history.replaceState(null, "", href);
+  };
+
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-gradient-to-b from-slate-50 via-white to-slate-100 py-14 text-slate-900 dark:from-[#080D27] dark:via-[#080D27] dark:to-[#080D27] dark:text-white lg:py-20">
       {/* Animated Background Glow */}
@@ -165,9 +193,17 @@ export default function HeroSection() {
               whileTap={{ scale: 0.96 }}
               className="inline-block w-full rounded-full bg-[linear-gradient(95.47deg,#A64DFF_0.6%,#D741C3_39.66%,#5716A7_78.1%,#5D00B9_99.4%)] p-[2px] sm:w-auto"
             >
-              <Button className="h-[46px] w-full rounded-full border-0 bg-slate-900 px-6 text-sm font-semibold text-white hover:bg-slate-800 dark:bg-[#070B2A] dark:text-white dark:hover:bg-[#0b1040] sm:h-[48px] sm:text-base">
-                View My Work
-                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+              <Button
+                asChild
+                className="h-[46px] w-full rounded-full border-0 bg-slate-900 px-6 text-sm font-semibold text-white hover:bg-slate-800 dark:bg-[#070B2A] dark:text-white dark:hover:bg-[#0b1040] sm:h-[48px] sm:text-base"
+              >
+                <a
+                  href="#projects"
+                  onClick={(event) => scrollToSection(event, "#projects")}
+                >
+                  View My Work
+                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                </a>
               </Button>
             </motion.div>
 
@@ -176,9 +212,17 @@ export default function HeroSection() {
               whileTap={{ scale: 0.96 }}
               className="w-full sm:w-auto"
             >
-              <Button className="h-[46px] w-full rounded-full border-0 bg-white px-6 text-sm font-semibold text-[#1E1E1E] shadow-sm hover:bg-slate-100 dark:bg-white dark:text-[#1E1E1E] dark:hover:bg-gray-100 sm:h-[50px] sm:text-base">
-                Contact Me
-                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+              <Button
+                asChild
+                className="h-[46px] w-full rounded-full border-0 bg-white px-6 text-sm font-semibold text-[#1E1E1E] shadow-sm hover:bg-slate-100 dark:bg-white dark:text-[#1E1E1E] dark:hover:bg-gray-100 sm:h-[50px] sm:text-base"
+              >
+                <a
+                  href="#contact"
+                  onClick={(event) => scrollToSection(event, "#contact")}
+                >
+                  Contact Me
+                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                </a>
               </Button>
             </motion.div>
           </motion.div>

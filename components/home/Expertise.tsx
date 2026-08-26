@@ -91,7 +91,7 @@ export default function ExperienceSection() {
 
                 <div className="flex flex-wrap items-center gap-2 text-sm text-slate-600 dark:text-gray-300 sm:text-base">
                   <span className="font-medium">
-                    Scale Ads Agency
+                    Scale Up IT Limited
                   </span>
 
                   <span className="flex items-center gap-1 text-slate-500 dark:text-gray-500">
