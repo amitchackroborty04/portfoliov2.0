@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/provider/ThemeProvider";
 import SmoothScrollProvider from "@/components/provider/SmoothScrollProvider";
 import { Toaster } from "@/components/ui/sonner";
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 export const metadata: Metadata = {
   title: "Amit's Portfolio",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
     icon: "/fav.png",
   },
 };
-
+ 
 export default function RootLayout({
   children,
 }: {
@@ -31,6 +32,7 @@ export default function RootLayout({
           </SmoothScrollProvider>
         </ThemeProvider>
       </body>
+        <GoogleAnalytics gaId="G-YM04XVFLV" />
     </html>
   );
 }
