@@ -55,8 +55,22 @@ export default function Footer() {
         <div className="grid grid-cols-12 items-start gap-8">
           {/* Logo and Info */}
           <div className="col-span-12 sm:col-span-6 lg:col-span-3">
-            <div className="w-[171px] h-[56px] hover:scale-105 transition-transform duration-300 hover:cursor-pointer">
-              <Image src="/logo.png" alt="logo" width={1000} height={1000} className="w-full h-full" />
+            <div className="relative h-[56px] w-[171px] overflow-hidden bg-white transition-all duration-300 hover:scale-105 hover:cursor-pointer dark:bg-transparent">
+              <Image
+                src="/blacklogo.jpeg"
+                alt="logo"
+                width={1000}
+                height={1000}
+                className="absolute inset-0 h-full w-full object-cover opacity-100 transition-opacity duration-300 dark:opacity-0"
+              />
+              <Image
+                src="/logo.png"
+                alt=""
+                width={1000}
+                height={1000}
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 dark:opacity-100"
+              />
             </div>
             <p className="mt-6 text-sm text-slate-600 dark:text-white">
               Frontend & Full-Stack Developer <br />

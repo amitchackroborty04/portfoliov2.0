@@ -66,14 +66,24 @@ export default function Navbar() {
         <Link
           href="#home"
           onClick={(event) => handleNavClick(event, "#home")}
-          className="h-[36px] w-[112px] transition-transform duration-300 hover:scale-105 sm:h-[40px] sm:w-[120px] lg:h-[56px] lg:w-[171px]"
+          className="relative h-[36px] w-[112px] overflow-hidden bg-white transition-all duration-300 hover:scale-105 dark:bg-transparent sm:h-[40px] sm:w-[120px] lg:h-[56px] lg:w-[171px]"
         >
           <Image
-            src="/logo.png"
+            src="/blacklogo.jpeg"
             alt="logo"
             width={1000}
             height={1000}
-            className="h-full w-full"
+            priority
+            className="absolute inset-0 h-full w-full object-cover opacity-100 transition-opacity duration-300 dark:opacity-0"
+          />
+          <Image
+            src="/logo.png"
+            alt=""
+            width={1000}
+            height={1000}
+            priority
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 dark:opacity-100"
           />
         </Link>
 
@@ -126,14 +136,22 @@ export default function Navbar() {
                 <Link
                   href="#home"
                   onClick={(event) => handleNavClick(event, "#home")}
-                  className="mb-8 h-[42px] w-[132px]"
+                  className="relative mb-8 h-[42px] w-[132px] overflow-hidden bg-white transition-colors duration-300 dark:bg-transparent"
                 >
                   <Image
-                    src="/logo.png"
+                    src="/blacklogo.jpeg"
                     alt="logo"
                     width={1000}
                     height={1000}
-                    className="h-full w-full object-contain"
+                    className="absolute inset-0 h-full w-full object-cover opacity-100 transition-opacity duration-300 dark:opacity-0"
+                  />
+                  <Image
+                    src="/logo.png"
+                    alt=""
+                    width={1000}
+                    height={1000}
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 dark:opacity-100"
                   />
                 </Link>
 
