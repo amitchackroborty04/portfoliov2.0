@@ -93,10 +93,10 @@ export default function AboutMeSection() {
             >
               I’m a passionate MERN Stack Developer with{" "}
               <span className="relative inline-block font-semibold text-slate-900 dark:text-white">
-                1 year of professional experience
+                2 year of professional experience
                 <span className="absolute bottom-1 left-0 h-2 w-full -z-10 bg-purple-500/20" />
               </span>{" "}
-              at BDCalling Limited. I specialize in building full-stack web
+              at Sccale Up It Limited. I specialize in building full-stack web
               applications that are not only functional but also beautifully
               designed and user-friendly.
             </motion.p>
